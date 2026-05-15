@@ -1,13 +1,10 @@
-.
-
 📊 Electronics Product Analytics – Python Data Analysis Project
 📌 Project Overview
 
-This project focuses on analyzing customer ratings and product performance in an electronics marketplace using Python.
+This project analyzes customer ratings and product performance in an electronics marketplace using Python.
+The objective is to transform raw review data into actionable business insights that help companies improve product quality, marketing strategy, and vendor decision-making.
 
-The goal is to transform raw customer review data into business insights that help companies improve product quality, marketing strategy, and vendor decisions.
-
-This is a complete end-to-end data analytics project covering:
+This is a complete end-to-end Data Analytics project covering:
 
 Data Cleaning
 Exploratory Data Analysis (EDA)
@@ -16,175 +13,103 @@ Data Visualization
 Business Insights & Recommendations
 🎯 Business Objectives
 
-The project answers key business questions:
+This project answers real-world business questions:
 
-1️⃣ Customer Satisfaction Analysis
-2️⃣ Best Performing Product Categories
-3️⃣ Brand Performance Analysis
-4️⃣ Customer Behavior Analysis
-5️⃣ Product Popularity Analysis
+Customer Satisfaction Analysis
+Best Performing Product Categories
+Brand Performance Analysis
+Customer Behavior Analysis
+Product Popularity Analysis
 
 These insights help stakeholders make data-driven decisions.
 
 🗂️ Dataset Description
 
-The dataset contains customer review data of electronics products.
+The dataset contains customer reviews of electronics products.
 
-Main Features
 Column	Description
-item_id	Unique product identifier
-brand	Product brand
+item_id	Unique product ID
+brand	Brand name
 category	Product category
 rating	Customer rating (1–5)
 user_attr	Customer gender
 year	Review year
-⚙️ Tools & Libraries Used
-Python 🐍
-Pandas – Data Cleaning & Analysis
-NumPy – Numerical operations
-Matplotlib – Data Visualization
-Seaborn – Statistical Visualization
-Jupyter Notebook – Project development
-🧹 Step 1 — Data Cleaning
+🛠️ Tools & Technologies
+Python
+Pandas
+NumPy
+Matplotlib
+Seaborn
+Jupyter Notebook
+🧹 Data Cleaning Process
 
-Data preprocessing performed:
+The raw dataset was cleaned using:
 
 Removed duplicates
 Handled missing values
-Fixed data types
 Standardized category & brand names
-Created new features (Year extraction)
+Fixed data types
 Removed invalid ratings
+Created time-based features
 
-Clean dataset → electronics_cleaned.csv
+Final cleaned dataset → electronics_cleaned.csv
 
-📈 Step 2 — Exploratory Data Analysis (EDA)
+📈 Exploratory Data Analysis (EDA)
 
-EDA was performed to understand:
+EDA helped understand:
 
 Rating distribution
-Category distribution
-Brand distribution
+Category & brand distribution
 Customer demographics
 Trends over time
-
-This helped uncover patterns before solving business problems.
-
 📊 Business Analysis & Insights
 1️⃣ Customer Satisfaction Analysis
-
-Goal: Measure customer happiness.
-
-Questions Answered
-Overall average product rating
+Overall average rating
 Highest & lowest rated categories
-Brands with poor customer satisfaction
+Brands with poor satisfaction
 Rating trends over time
-Key Insight
-
-Low ratings highlight product quality or service issues.
-
 2️⃣ Best Performing Product Categories
-
-Goal: Identify categories customers love most.
-
-Questions Answered
 Highest rated categories ⭐
 Most engaged categories 📈
 Declining categories 📉
-Categories deserving marketing investment 💰
-Business Value
-
-Helps decide where to invest marketing budget.
-
+Marketing investment opportunities 💰
 3️⃣ Brand Performance Analysis
-
-Goal: Compare brand reputation.
-
-Questions Answered
 Highest rated brands ⭐
 Most reviewed brands 📊
 Poor performing brands ⚠️
-Brand popularity growth over time 📈
-Business Value
-
-Supports vendor partnerships and inventory planning.
-
+Brand popularity trends 📈
 4️⃣ Customer Behavior Analysis
-
-Goal: Understand customer segments.
-
-Questions Answered
-Rating differences by gender
-Gender giving higher ratings
+Gender rating differences
 Category preference by gender
 Rating behavior distribution
-Business Value
-
-Enables targeted marketing & segmentation.
-
 5️⃣ Product Popularity Analysis
-
-Goal: Identify best & worst products.
-
-Questions Answered
 Most reviewed products 🔥
 Highest rated products ⭐
-Popular vs highly rated relationship
+Popular vs highly rated comparison
 Products needing improvement 🚨
-Business Value
-
-Helps improve product quality & promotion strategy.
-
-📊 Key Business Insights
-
-✔ Popular products drive engagement but may not always satisfy customers
-✔ Some brands dominate market attention
-✔ Certain categories deserve higher marketing investment
-✔ Customer segments show different rating behavior
-✔ Several high-demand products require quality improvement
-
+💡 Key Insights
+Popular products are not always highly rated
+Some brands dominate customer attention
+Certain categories deserve more marketing investment
+Customer segments rate products differently
+Some high-demand products need quality improvement
 💼 Business Recommendations
-Invest marketing in high rating + high engagement categories
-Improve popular but low rated products
+Invest in high rating + high engagement categories
+Improve popular but low-rated products
 Strengthen partnerships with top performing brands
-Use gender-based targeting for promotions
-Monitor declining categories for product upgrades
-📷 Sample Visualizations
-
-The project includes:
-
-Bar Charts
-Horizontal Charts
-Donut Charts
-Scatter Plots
-Box Plots
-Trend Line Charts
-
-These visuals make insights easy to understand for stakeholders.
-
+Use targeted marketing based on customer segments
+Monitor declining categories
 🚀 How to Run This Project
-
-1️⃣ Clone repository
-
-git clone https://github.com/yourusername/electronics-product-analytics.git
-
-2️⃣ Install dependencies
-
+Clone repository
+git clone https://github.com/yourusername/Python-Data-Analysis-Projects.git
+Install libraries
 pip install pandas numpy matplotlib seaborn
+Run notebook
 
-3️⃣ Open notebook
-
-jupyter notebook
-
-4️⃣ Run the notebook:
+Open and run:
 
 Interactive - Product_Sales.py.ipynb
 👨‍💻 Author
 
 Madhavan Shanmugam
-Data Analyst
-
-⭐ If you like this project
-
-Give it a ⭐ on GitHub and share feedback!
+Data Analyst | Python | Power BI | SQL | Advanced Excel
