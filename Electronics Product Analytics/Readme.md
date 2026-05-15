@@ -7,6 +7,7 @@ This repository features an end-to-end **Data Analytics** workflow designed to t
 ## 👤 Author
 
 **Madhavan Shanmugam**
+
 *Data Analyst | Python | Power BI | SQL | Advanced Excel*
 
 ---
