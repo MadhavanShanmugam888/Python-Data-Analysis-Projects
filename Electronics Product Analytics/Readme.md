@@ -1,307 +1,129 @@
-```python
-import nbformat
+# 📊 Electronics Product Analytics — Comprehensive Data Analysis Project
 
-def read_ipynb(file_path):
-    with open(file_path, 'r', encoding='utf-8') as f:
-        nb = nbformat.read(f, as_version=4)
-    
-    content = ""
-    for cell in nb.cells:
-        if cell.cell_type == 'markdown':
-            content += cell.source + "\n\n"
-        elif cell.cell_type == 'code':
-            content += "```
-```text?code_stderr&code_event_index=2
-Traceback (most recent call last):
-  File "<xbox-string>", line 1, in <module>
-    import nbformat
-ModuleNotFoundError: No module named 'nbformat'
-
-```python\n" + cell.source + "\n```\n\n"
-    return content
-
-notebook_content = read_ipynb('Interactive - Product_Sales.py.ipynb')
-print(notebook_content[:2000]) # Print first 2000 chars to get an overview
-
-
-
-```
-
-```python
-import json
-
-def read_ipynb_json(file_path):
-    with open(file_path, 'r', encoding='utf-8') as f:
-        nb = json.load(f)
-    
-    content = []
-    for cell in nb.get('cells', []):
-        cell_type = cell.get('cell_type')
-        source = "".join(cell.get('source', []))
-        if cell_type == 'markdown':
-            content.append(f"### Markdown Cell:\n{source}")
-        elif cell_type == 'code':
-            content.append(f"### Code Cell:\n{source}")
-    
-    return "\n\n".join(content)
-
-notebook_text = read_ipynb_json('Interactive - Product_Sales.py.ipynb')
-print(notebook_text[:3000]) # Print more characters to capture structure and findings
-
-
-```
-
-```text
-### Markdown Cell:
-Connected to Python 3.13.13
-
-### Code Cell:
-# The dataset gives us electronics sales data at Amazon. 
-
-# It contains user ratings for various electronics items sold, along with category of each item and time of sell.
-
-# The dataset is available at https://www.kaggle.com/datasets/edusanketdk/electronics
-
-# Importing the libraries
-
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
-
-
-
-### Code Cell:
-# Importing the dataset
-dataset= pd.read_csv('electronics.csv')
-
-
-
-### Code Cell:
-# List the first five rows
-dataset.head()
-
-
-
-### Code Cell:
-# List the last 5 rows
-dataset.tail()
-
-
-
-### Code Cell:
-dataset.size
-
-### Code Cell:
-dataset.shape
-
-### Code Cell:
-dataset.columns
-
-### Code Cell:
-dataset.info()
-
-### Code Cell:
-from datetime import datetime
-
-### Code Cell:
-pd.to_datetime(dataset['timestamp'])
-
-### Code Cell:
-dataset.columns= dataset.columns.str.lower().str.strip()
-dataset.columns
-
-
-
-### Code Cell:
-dataset= dataset.drop("split", axis=1)
-dataset.columns
-
-
-
-### Code Cell:
-dataset.isnull().sum()
-
-### Code Cell:
-dataset["brand"]= dataset["brand"].fillna("Unknown")
-dataset["user_attr"]= dataset["user_attr"].fillna("Unknown")
-dataset.isnull().sum()
-
-
-
-### Code Cell:
-dataset.duplicated().sum()
-
-### Code Cell:
-dataset.info()
-
-### Code Cell:
-dataset["timestamp"]= pd.to_datetime(dataset["timestamp"])
-dataset.info()
-
-
-
-### Code Cell:
-dataset["rating"].describe()
-
-### Code Cell:
-dataset = dataset[(dataset["rating"] >= 1) & (dataset["rating"] <= 5)]
-
-### Code Cell:
-dataset["rating"] = pd.to_numeric(dataset["rating"])
-
-### Code Cell:
-dataset["category"].unique()
-
-### Code Cell:
-dataset["brand"].unique()
-
-### Code Cell:
-dataset["model_attr"].unique()
-
-### Code Cell:
-dataset["user_attr"].unique()
-
-### Code Cell:
-dataset= dataset.reset_index(drop=True)
-
-### Code Cell:
-dataset.shape
-
-### Code Cell:
-dataset["month"] = dataset["timestamp"].dt.month
-dataset["month_name"] = dataset["timestamp"].dt.month_name() 
-dataset["year"] = dataset["timestamp"].dt.year 
-
-
-
-### Code Cell:
-dataset.columns
-
-### Code Cell:
-dataset.to_csv("Electronics_Cleaned.csv", index=True)
-
-### Code Cell:
-plt.figure(figsize=(8,5))
-sns.set_style("whitegrid")
-
-
-
-### Code Cell:
-# Exploratory Data Analysis (EDA)
-
-### Code Cell:
-## What is the overall average rating of products? 
-overall_avg_rating = round(dataset['rating'].mean(),2)
-overall_avg_rating
-
-
-
-### Code Cell:
-# Visualize Ratings
-
-plt.figure(figsize=(8,8))
-
-plt.hist(
-    dataset["rating"],
-    bins=5,
-    color="skyblue",
-    edgecolor="black"
-)
-
-plt.xticks(range(0,6))
-plt.xlabel("Rating")
-plt.ylabel("Counts")
-plt.title("Distribution of Product Ratings")
-
-plt.tight_layout()
-plt.show()
-
-
-
-### Code Cell:
-## Buisiness Insight
-### The average product rating is 4.05, indicating high customer satisfaction, with most ratings concentrated between 4 and 5.
-
-
-
-### Code Cell:
-dataset["category"].value_counts()
-
-### Code Cell:
-# Which categories receive the highest and lowest ratings? 
-
-mean_rat
-
-
-```
-
-# Project: Amazon Electronics Sales Analysis
-
-This project performs a comprehensive Data Analysis on Amazon Electronics sales data. The goal is to understand customer satisfaction, product popularity, and category performance to provide actionable business insights.
-
-## Project Overview
-
-The analysis explores user ratings, product categories, and temporal trends in the electronics market. By cleaning and visualizing the dataset, we identify high-demand items, customer sentiment trends, and specific products that require quality improvements.
-
-## Dataset Information
-
-The dataset contains information about various electronics items sold on Amazon, including:
-
-* **User Ratings:** Customer scores ranging from 1 to 5.
-* **Product Categories:** Groups like Laptops, Cameras, Phones, etc.
-* **Timestamps:** Sale dates used for time-series analysis.
-* **Brand & User Attributes:** Metadata for deeper segmentation.
-
-*Source: [Kaggle - Electronics Dataset*](https://www.kaggle.com/datasets/edusanketdk/electronics)
-
-## Tech Stack
-
-* **Language:** Python
-* **Libraries:**
-* `Pandas`: Data manipulation and cleaning.
-* `NumPy`: Numerical operations.
-* `Matplotlib` & `Seaborn`: Statistical data visualization.
-
-
-
-## Key Analysis & Workflow
-
-### 1. Data Cleaning & Preprocessing
-
-* **Missing Value Treatment:** Standardized missing brand and user attributes as "Unknown".
-* **Data Formatting:** Converted timestamps to datetime objects and extracted features like Month and Year.
-* **Integrity Checks:** Removed duplicates and validated rating ranges (1-5).
-* **Exporting Clean Data:** Saved the processed dataset as `Electronics_Cleaned.csv` for further reporting.
-
-### 2. Exploratory Data Analysis (EDA)
-
-* **Rating Distribution:** Analyzed the spread of customer satisfaction across all products.
-* **Category Performance:** Evaluated which product categories drive the highest engagement and ratings.
-* **Trend Analysis:** Investigated how sales and ratings fluctuate over different months and years.
-
-### 3. Business Insights
-
-* **Customer Satisfaction:** The overall average product rating is **4.05**, indicating high general satisfaction.
-* **Product Popularity:** Identified "Hero Products" that have both high review volumes and high ratings.
-* **Quality Alert:** Highlighted popular products with consistently low ratings, signaling an urgent need for quality control or feature updates.
-
-## Business Summary
-
-* **Promote Heavily:** Products that are both popular and highly rated are prime candidates for marketing campaigns.
-* **Fix Urgently:** High-volume products with poor ratings represent a risk to brand reputation and should be prioritized for quality improvements.
+This repository features an end-to-end **Data Analytics** workflow designed to transform raw consumer electronics data into strategic business intelligence. By leveraging the Python data science ecosystem, the project bridges the gap between raw numbers and executive decision-making.
 
 ---
 
-## Author
+## 👤 Author
 
-**Madhavan Shanmugam** *Data Analyst | Python | Power BI | SQL | Advanced Excel*
+**Madhavan Shanmugam**
+*Data Analyst | Python | Power BI | SQL | Advanced Excel*
 
 ---
 
-### How to Run
+## 📌 Project Overview
 
-1. Ensure you have Python installed.
-2. Install dependencies: `pip install pandas matplotlib seaborn`.
-3. Place `electronics.csv` in the project directory.
-4. Run the Jupyter Notebook: `Interactive - Product_Sales.py.ipynb`.
+In the highly competitive electronics market, understanding consumer sentiment is critical. This project analyzes large-scale review data to identify performance bottlenecks and growth opportunities.
+
+The objective is to provide actionable insights that help stakeholders optimize:
+
+* **Product Quality:** Identifying consistent defects or low-satisfaction items.
+* **Marketing Strategy:** Aligning campaigns with high-performing categories and demographics.
+* **Vendor Management:** Evaluating brand reliability to inform inventory decisions.
+* **Customer Targeting:** Segmenting behavior to improve conversion rates.
+
+---
+
+## 🎯 Business Problems Solved
+
+This project moves beyond descriptive statistics to solve real-world industry challenges:
+
+* **Satisfaction Indexing:** What is the baseline health of our product catalog?
+* **Category Benchmarking:** Which sectors (e.g., Audio vs. Computing) are driving growth?
+* **Brand Loyalty & Performance:** Which manufacturers are enhancing our brand reputation?
+* **Consumer Behavior:** How do different user segments interact with various product types?
+* **Popularity vs. Quality:** Are our best-sellers actually our best products?
+
+---
+
+## 📂 Dataset Architecture
+
+The analysis is performed on a multi-dimensional dataset capturing the intersection of products, brands, and people.
+
+| Column | Description |
+| --- | --- |
+| **item_id** | Unique identifier for each electronic product. |
+| **brand** | The manufacturer or brand name of the item. |
+| **category** | The specific product segment (e.g., Laptops, Headphones). |
+| **rating** | Customer satisfaction score on a scale of 1–5. |
+| **user_attr** | Categorical attribute of the customer (e.g., gender). |
+| **timestamp** | Temporal data used for time-series extraction. |
+
+---
+
+## 🛠️ Tools & Technologies
+
+* **Language:** Python 3.x
+* **Libraries:** * `Pandas`: Deep data manipulation and aggregation.
+* `NumPy`: High-performance numerical computing.
+* `Matplotlib` & `Seaborn`: Advanced statistical data visualization.
+
+
+* **Environment:** Jupyter Notebook for interactive development and documentation.
+
+---
+
+## 🧹 Professional Data Cleaning Pipeline
+
+Raw data is rarely "analysis-ready." This project implements a rigorous cleaning protocol:
+
+1. **Deduplication:** Identified and removed redundant records to prevent inflated metrics.
+2. **Imputation:** Handled missing values in `brand` and `user_attr` to preserve data volume.
+3. **Standardization:** Normalized text (lowercasing/trimming) to ensure consistent grouping.
+4. **Constraint Validation:** Enforced integrity checks to ensure all ratings fall strictly between 1 and 5.
+5. **Feature Engineering:** Extracted `Month`, `Year`, and `Month_Name` from raw timestamps to enable seasonal trend analysis.
+
+**Output:** `electronics_cleaned.csv` — a high-integrity file ready for modeling.
+
+---
+
+## 📈 Key Analysis & Deep-Dive Insights
+
+### ⭐ Customer Satisfaction Analysis
+
+* **Average Rating:** Established a global mean of **4.05**, serving as a benchmark for all individual products.
+* **Sentiment Spread:** Visualized the distribution of scores to identify the volume of "detractors" (1-2 stars) vs. "promoters" (4-5 stars).
+
+### 🏆 Category & Brand Performance
+
+* **Market Share:** Ranked categories by review volume to identify market dominance.
+* **Reliability Metrics:** Identified underperforming brands with consistently low ratings, providing a "Red Flag" list for procurement teams.
+
+### 👥 Demographic Insights
+
+* **Gender-Based Preferences:** Analyzed how different user attributes correlate with specific electronics categories.
+* **Targeted Marketing:** Identified which categories resonate most with specific segments to optimize ad spend.
+
+### 🔥 Product Popularity Matrix
+
+* **The "Hero" Analysis:** Correlated review volume with average ratings.
+* **Strategic Action:** * *High Rating/High Volume:* Scale marketing.
+* *Low Rating/High Volume:* Critical quality intervention required.
+
+
+
+---
+
+## 🚀 How to Run
+
+1. **Clone the Repo:**
+```bash
+git clone https://github.com/yourusername/electronics-product-analytics.git
+
+```
+
+
+2. **Install Dependencies:**
+```bash
+pip install pandas numpy matplotlib seaborn
+
+```
+
+
+3. **Execute:** Run the `Interactive - Product_Sales.py.ipynb` notebook to reproduce the analysis and visualizations.
+
+---
+
+## 💡 Final Conclusion
+
+This project demonstrates the transition from **Data to Decision**. By applying structured analytical techniques, we move from simply seeing "4 stars" to understanding the underlying factors of market success and operational risk. It serves as a blueprint for data-driven retail management.
