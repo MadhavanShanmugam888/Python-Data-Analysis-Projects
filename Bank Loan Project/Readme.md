@@ -144,10 +144,12 @@ jupyter notebook
 
 ---
 
-##  Author
 
-Madhavan
-Data Analyst
+## 👤 Author
+
+**Madhavan Shanmugam**
+
+*Data Analyst | Python | Power BI | SQL | Advanced Excel*
 
 ---
 
