@@ -1,127 +1,70 @@
-📊 Electronics Product Analytics — Python Data Analysis Project
+Project: Amazon Electronics Sales Analysis
+This project performs a comprehensive Data Analysis on Amazon Electronics sales data. The goal is to understand customer satisfaction, product popularity, and category performance to provide actionable business insights.
 
-Author:
-Madhavan Shanmugam
-Data Analyst | Python | Power BI | SQL | Advanced Excel
+Project Overview
+The analysis explores user ratings, product categories, and temporal trends in the electronics market. By cleaning and visualizing the dataset, we identify high-demand items, customer sentiment trends, and specific products that require quality improvements.
 
-📌 Project Overview
+Dataset Information
+The dataset contains information about various electronics items sold on Amazon, including:
 
-This project analyzes customer ratings and product performance in an electronics marketplace using Python.
+User Ratings: Customer scores ranging from 1 to 5.
 
-The objective is to transform raw review data into actionable business insights that help companies improve:
+Product Categories: Groups like Laptops, Cameras, Phones, etc.
 
-Product quality
-Marketing strategy
-Vendor decision-making
-Customer targeting
+Timestamps: Sale dates used for time-series analysis.
 
-This is a complete end-to-end Data Analytics project covering:
+Brand & User Attributes: Metadata for deeper segmentation.
 
-Data Cleaning
-Exploratory Data Analysis (EDA)
-Business Problem Solving
-Data Visualization
-Business Insights & Recommendations
-🎯 Business Problems Solved
+Source: Kaggle - Electronics Dataset
 
-This project answers real-world business questions:
+Tech Stack
+Language: Python
 
-Customer Satisfaction Analysis
-Best Performing Product Categories
-Brand Performance Analysis
-Customer Behavior Analysis
-Product Popularity Analysis
+Libraries:
 
-These insights help stakeholders make data-driven decisions.
+Pandas: Data manipulation and cleaning.
 
-📂 Dataset Description
+NumPy: Numerical operations.
 
-The dataset contains customer reviews of electronics products.
+Matplotlib & Seaborn: Statistical data visualization.
 
-Columns Description
-Column	Description
-item_id	Unique Product ID
-brand	Brand name
-category	Product category
-rating	Customer rating (1–5)
-user_attr	Customer gender
-year	Review year
-🛠️ Tools & Technologies Used
-Python
-Pandas
-NumPy
-Matplotlib
-Seaborn
-Jupyter Notebook
-🧹 Data Cleaning Process
+Key Analysis & Workflow
+1. Data Cleaning & Preprocessing
+Missing Value Treatment: Standardized missing brand and user attributes as "Unknown".
 
-The raw dataset was cleaned using the following steps:
+Data Formatting: Converted timestamps to datetime objects and extracted features like Month and Year.
 
-Removed duplicate records
-Handled missing values
-Standardized category & brand names
-Fixed incorrect data types
-Removed invalid ratings
-Created time-based features
+Integrity Checks: Removed duplicates and validated rating ranges (1-5).
 
-Final cleaned dataset:
-electronics_cleaned.csv
+Exporting Clean Data: Saved the processed dataset as Electronics_Cleaned.csv for further reporting.
 
-📊 Key Analysis & Insights
-⭐ Customer Satisfaction Analysis
-Calculated overall average product rating
-Identified categories with highest & lowest ratings
-Found brands with poor customer satisfaction
-Analyzed rating trends over time
+2. Exploratory Data Analysis (EDA)
+Rating Distribution: Analyzed the spread of customer satisfaction across all products.
 
-Business Value:
-Low ratings indicate product or service issues.
+Category Performance: Evaluated which product categories drive the highest engagement and ratings.
 
-🏆 Best Performing Categories
-Identified top-rated categories
-Measured customer engagement using number of ratings
-Found declining categories over time
+Trend Analysis: Investigated how sales and ratings fluctuate over different months and years.
 
-Business Value:
-Helps decide where to invest marketing budget.
+3. Business Insights
+Customer Satisfaction: The overall average product rating is 4.05, indicating high general satisfaction.
 
-🏷️ Brand Performance Analysis
-Compared average ratings across brands
-Identified brands with most reviews
-Found consistently underperforming brands
+Product Popularity: Identified "Hero Products" that have both high review volumes and high ratings.
 
-Business Value:
-Supports vendor partnerships & inventory decisions.
+Quality Alert: Highlighted popular products with consistently low ratings, signaling an urgent need for quality control or feature updates.
 
-👥 Customer Behavior Analysis
-Compared rating behavior by gender
-Identified category preferences by gender
+Business Summary
+Promote Heavily: Products that are both popular and highly rated are prime candidates for marketing campaigns.
 
-Business Value:
-Enables targeted marketing campaigns.
+Fix Urgently: High-volume products with poor ratings represent a risk to brand reputation and should be prioritized for quality improvements.
 
-🔥 Product Popularity Analysis
-Found most reviewed products
-Identified highest rated products
-Compared popularity vs rating
+Author
+Madhavan Shanmugam Data Analyst | Python | Power BI | SQL | Advanced Excel
 
-Business Value:
-Helps improve weak products and promote strong ones.
+How to Run
+Ensure you have Python installed.
 
-📈 Project Outcome
+Install dependencies: pip install pandas matplotlib seaborn.
 
-This project demonstrates how Python can be used to:
+Place electronics.csv in the project directory.
 
-Clean messy real-world data
-Perform deep exploratory analysis
-Generate business insights
-Create impactful visualizations
-🚀 How to Run the Project
-Download the dataset
-Open the Jupyter Notebook
-Run all cells step-by-step
-💡 Final Conclusion
-
-This project showcases an end-to-end data analytics workflow — from raw data to business recommendations.
-
-It reflects real-world analytics work performed by a Data Analyst.
+Run the Jupyter Notebook: Interactive - Product_Sales.py.ipynb.
